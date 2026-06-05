@@ -622,9 +622,12 @@ def update_main_ics(fr_year: int, to_year: int, nowyear: int) -> str:
         filename = _file_path(f"{year}.json")
         if not os.path.isfile(filename):
             continue
-        with open(filename, "r", encoding="utf8") as inf:
-            data = json.loads(inf.read())
-            all_days.extend(data.get("days"))
+        try:
+            with open(filename, "r", encoding="utf8") as inf:
+                data = json.loads(inf.read())
+                all_days.extend(data.get("days", []))
+        except (json.JSONDecodeError, IOError):
+            continue
 
     filename = _file_path("holiday-cn.ics")
     generate_main_ics(all_days, filename, nowyear)
