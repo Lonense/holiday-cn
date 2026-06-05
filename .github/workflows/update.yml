@@ -30,7 +30,7 @@ jobs:
       - name: Update
         if: github.event_name != 'pull_request'
         run: |
-          python ./update.py
+          python ./update.py -o holiday-cn.ics
           git add .
           git diff --cached --quiet && exit 0
           git commit --quiet -m "Update Holiday Data Regularly (GitHub Actions)"
