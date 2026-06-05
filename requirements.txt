@@ -1,5 +1,5 @@
-requests==2.31.0
-beautifulsoup4==4.10.0
-tqdm==4.62.3
-icalendar==4.0.9
-zhdate==0.1
+requests>=2.32,<3
+beautifulsoup4>=4.10,<5
+tqdm>=4.62,<5
+icalendar>=6,<7
+zhdate>=0.1,<1
